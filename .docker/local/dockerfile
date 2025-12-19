@@ -1,0 +1,8 @@
+FROM golang:1.25.1-bookworm
+
+RUN go install github.com/cespare/reflex@latest
+
+WORKDIR /home
+VOLUME /home
+
+ENTRYPOINT ["reflex", "-r", "\\.go$", "--", "go", "run", "api/cmd/main.go"]

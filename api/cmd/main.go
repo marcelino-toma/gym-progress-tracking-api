@@ -15,4 +15,5 @@ func main() {
 	if err != nil {
 		log.Print(err)
 	}
+	fmt.Println(cfg)
 }

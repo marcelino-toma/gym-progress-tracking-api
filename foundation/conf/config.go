@@ -14,7 +14,7 @@ type Config struct {
 }
 
 type web struct {
-	APIHost string `conf: "default:0.0.0.0:8081, env:API_HOST"`
+	APIHost string `conf:"default:0.0.0.0:8081,env:API_HOST"`
 }
 
 func New() *Config {
@@ -25,6 +25,8 @@ func (c *Config) Parse() error {
 	if help, pErr := conf.Parse(namespace, c); pErr != nil {
 		if errors.Is(pErr, conf.ErrHelpWanted) {
 			fmt.Println(help)
+
+			return nil
 		}
 		return pErr
 	}
