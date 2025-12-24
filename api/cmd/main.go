@@ -8,10 +8,9 @@ import (
 )
 
 func main() {
-	fmt.Println("hello")
-
+	fmt.Println("test123")
 	cfg := conf.New()
-	err:= cfg.Parse()
+	err := cfg.Parse()
 	if err != nil {
 		log.Print(err)
 	}

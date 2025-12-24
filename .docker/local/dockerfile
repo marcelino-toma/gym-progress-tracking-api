@@ -1,8 +1,12 @@
-FROM golang:1.25.1-bookworm
-
-RUN go install github.com/cespare/reflex@latest
+FROM golang:1.25.1-bookworm AS builder
 
 WORKDIR /home
 VOLUME /home
 
-ENTRYPOINT ["reflex", "-r", "\\.go$", "--", "go", "run", "api/cmd/main.go"]
+RUN apt-get update && apt-get install -y \
+    git \
+    curl
+
+RUN go install github.com/cespare/reflex
+
+ENTRYPOINT [ "reflex", "-r", "\\.go$", "--start-service", "--", "go", "run", "-race", "api/cmd/main.go" ]
