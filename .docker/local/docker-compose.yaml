@@ -1,0 +1,12 @@
+services:
+  gpt-api:
+    env_file:
+      - ../../.env
+    container_name: gpt-api
+    build:
+      context: $PWD
+      dockerfile: $PWD/.docker/local/dockerfile  # Path to the Dockerfile from the root project
+    ports:
+      - "8081:8081"
+    volumes:
+      - $PWD:/home  # Mount the project directory (from root) to /home in the container
