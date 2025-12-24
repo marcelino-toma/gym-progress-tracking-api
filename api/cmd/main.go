@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	fmt.Println("test123")
+	fmt.Println("test1233333333")
 	cfg := conf.New()
 	err := cfg.Parse()
 	if err != nil {
